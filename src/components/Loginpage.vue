@@ -1,15 +1,17 @@
 <template>
     <div class="login-container">
         <h2>Login</h2>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" v-model="email" required />
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" v-model="password" required />
-        </div>
-        <button type="submit">Login</button>
+        <form @submit.prevent="login">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" v-model="email" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" v-model="password" required />
+            </div>
+            <button type="submit">Login</button>
+        </form>
         <router-link to="/signup">Don't have an account? Sign Up</router-link>
     </div>
 </template>
@@ -23,8 +25,13 @@ export default {
             password: ''
         }
     },
+    methods: {
+        login() {
+            console.log('Email:', this.email);
+            console.log('Password:', this.password);
+        }
+    }
 }
-
 </script>
 <style scoped>
 .login-container {
